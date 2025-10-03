@@ -14,13 +14,103 @@ A comprehensive GUI toolkit for automated image captioning using advanced AI mod
 
 ## 🚀 Quick Start
 
-### Prerequisites
+# Quick Start Guide
 
+Complete walkthrough for captioning images for WAN 2.2 character LoRA training.
+
+## Prerequisites
+
+✅ Cloud GPU instance (RunPod, Vast.ai, Lambda Labs)  
+✅ 12GB+ VRAM (24GB recommended)  
+✅ CUDA 11.8 or 12.x  
+✅ Basic familiarity with Jupyter/terminal  
+
+## Step-by-Step Guide
+
+### 1. Launch GPU Instance
+
+**Recommended: RunPod**
+
+1. Go to https://www.runpod.io/
+2. Click "Deploy" → "GPU Cloud"
+3. **Select GPU:**
+   - RTX 3090 24GB (~$0.39/hr) ⭐ Best value
+   - RTX 4090 24GB (~$0.69/hr) - Fastest
+   - RTX 3060 12GB (~$0.20/hr) - Budget
+
+4. **Template:** "RunPod Pytorch" 
+5. **Configuration:**
+   - Container Disk: 20GB
+   - Volume Storage: 30GB
+   - Expose Port: 7860 ✓
+6. Click "Deploy"
+
+Wait ~2-3 minutes for instance to start.
+
+**Alternative: Vast.ai**
+- Search for "RTX 3090" or "RTX 4090" instances
+- Select instances with 24GB+ VRAM
+- Use "PyTorch" template
+- Expose port 7860
+
+### 2. Install Toolkit
+
+Connect to your instance and open terminal (via Jupyter Lab or SSH).
+
+```bash
+# Clone the repository
+git clone https://github.com/rarecloud-io/WAN-2.2-Captioning-Toolkit.git
+cd WAN-2.2-Captioning-Toolkit
+
+# Install dependencies
+bash install.sh
+
+# Test installation
+bash scripts/test_installation.sh
+```
+
+### 3. Start Captioning
+
+```bash
+# Start the GUI
+cd workspace
+bash ../scripts/start_gui_public.sh
+```
+
+The interface will be available at the provided public URL (e.g., `https://xxxxx.gradio.live`).
+
+### 4. Process Your Images
+
+1. **Upload images** to the workspace directory
+2. **Use the GUI** to generate captions
+3. **Clean captions** with: `bash ../scripts/clean_captions.sh`
+4. **Add triggers** for LoRA training: `bash ../scripts/add_trigger.sh "sks" "man"`
+5. **Package dataset**: `bash ../scripts/package_dataset.sh`
+
+### 5. Troubleshooting Cloud GPU Issues
+
+**Common Issues:**
+
+- **CUDA out of memory**: Reduce batch size in GUI settings
+- **Port not accessible**: Ensure port 7860 is exposed in cloud provider settings
+- **Slow startup**: First run downloads models (~2-3GB), be patient
+- **Permission errors**: Run `chmod +x scripts/*.sh` if needed
+
+**Cost Optimization:**
+- Stop instance when not in use
+- Use spot instances for 50-70% savings
+- Monitor usage with `nvidia-smi` and `htop`
+
+---
+
+## Alternative Installation Methods
+
+### Local Installation
+
+**Prerequisites:**
 - Python 3.8+
 - CUDA-compatible GPU (recommended)
 - Ubuntu/Debian-based system (for automatic package installation)
-
-### Local Installation
 
 1. **Clone the repository:**
    ```bash
