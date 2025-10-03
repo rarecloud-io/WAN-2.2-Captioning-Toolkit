@@ -20,12 +20,12 @@ A comprehensive GUI toolkit for automated image captioning using advanced AI mod
 - CUDA-compatible GPU (recommended)
 - Ubuntu/Debian-based system (for automatic package installation)
 
-### Installation
+### Local Installation
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/wan-captioning-toolkit.git
-   cd wan-captioning-toolkit
+   git clone https://github.com/rarecloud-io/WAN-2.2-Captioning-Toolkit.git
+   cd WAN-2.2-Captioning-Toolkit
    ```
 
 2. **Run the installer:**
@@ -33,28 +33,64 @@ A comprehensive GUI toolkit for automated image captioning using advanced AI mod
    bash install.sh
    ```
 
-3. **Start the GUI:**
+3. **Test the installation:**
+   ```bash
+   bash scripts/test_installation.sh
+   ```
+
+4. **Start the GUI:**
    ```bash
    cd workspace
    bash ../scripts/start_gui_public.sh
    ```
 
-4. **Access the interface:**
+5. **Access the interface:**
    - Open your browser and go to the provided URL (usually `http://localhost:7860`)
    - The interface will be accessible publicly if using `--share` flag
+
+### VPS Deployment
+
+For VPS deployment, see the detailed [VPS Deployment Guide](VPS_DEPLOYMENT.md).
+
+**Quick VPS setup:**
+```bash
+# On your VPS
+git clone https://github.com/rarecloud-io/WAN-2.2-Captioning-Toolkit.git
+cd WAN-2.2-Captioning-Toolkit
+bash install.sh
+cd workspace
+bash ../scripts/start_gui_public.sh
+```
+
+### Docker Deployment
+
+For containerized deployment:
+
+```bash
+# Build and run with Docker Compose
+docker-compose up -d
+
+# Or build manually
+docker build -t wan-captioning-toolkit .
+docker run --gpus all -p 7860:7860 -v $(pwd)/workspace:/app/workspace wan-captioning-toolkit
+```
 
 ## 📁 Project Structure
 
 ```
-wan-captioning-toolkit/
+WAN-2.2-Captioning-Toolkit/
 ├── install.sh                 # Main installation script
 ├── scripts/
 │   ├── start_gui_public.sh    # GUI launcher
 │   ├── clean_captions.sh      # Caption cleaning utility
 │   ├── add_trigger.sh         # Trigger management
-│   └── package_dataset.sh     # Dataset packaging
+│   ├── package_dataset.sh     # Dataset packaging
+│   └── test_installation.sh  # Installation test script
 ├── workspace/                 # Working directory for images and captions
 ├── requirements.txt           # Python dependencies
+├── Dockerfile                 # Docker container configuration
+├── docker-compose.yml         # Docker Compose configuration
+├── VPS_DEPLOYMENT.md          # VPS deployment guide
 └── README.md                  # This file
 ```
 

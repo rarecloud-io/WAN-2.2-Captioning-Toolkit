@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  wan-captioning:
+    build: .
+    container_name: wan-captioning-toolkit
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./workspace:/app/workspace
+      - ./models:/app/models
+    environment:
+      - CUDA_VISIBLE_DEVICES=0
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7860/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
