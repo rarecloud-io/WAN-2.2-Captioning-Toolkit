@@ -8,7 +8,7 @@ echo "📡 Launching with public sharing enabled..."
 echo ""
 
 # Start the GUI with public sharing
-wd-llm-caption-gui --share --server_port 7860
+wd-llm-caption-gui --share --port 7860
 
 echo ""
 echo "🔗 GUI is now running!"
