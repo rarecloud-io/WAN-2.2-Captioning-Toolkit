@@ -23,7 +23,7 @@ Complete walkthrough for captioning images for WAN 2.2 character LoRA training.
 ✅ Cloud GPU instance (RunPod, Vast.ai, Lambda Labs)  
 ✅ 12GB+ VRAM (24GB recommended)  
 ✅ CUDA 11.8 or 12.x  
-✅ **PCIe 3.0 x16** (important for GPU performance)  
+✅ **PCIe 3.0 x16** (sufficient) or **PCIe 4.0 x16** (optimal)  
 ✅ Basic familiarity with Jupyter/terminal  
 
 ## Step-by-Step Guide
@@ -39,7 +39,7 @@ Complete walkthrough for captioning images for WAN 2.2 character LoRA training.
    - RTX 4090 24GB (~$0.69/hr) - Fastest
    - RTX 3060 12GB (~$0.20/hr) - Budget
 
-   **⚠️ Important:** Ensure PCIe 3.0 x16 for optimal performance
+   **⚠️ Important:** PCIe 3.0 x16 is sufficient, PCIe 4.0 x16 is optimal
 
 4. **Template:** "RunPod Pytorch" 
 5. **Configuration:**
@@ -104,11 +104,12 @@ The interface will be available at the provided public URL (e.g., `https://xxxxx
 - Use spot instances for 50-70% savings
 - Monitor usage with `nvidia-smi` and `htop`
 
-**PCIe 3.0 x16 Requirements:**
-- **Why it matters:** GPU needs high bandwidth for data transfer
+**PCIe Requirements:**
+- **PCIe 3.0 x16**: Sufficient for most AI workloads (16 GB/s bandwidth)
+- **PCIe 4.0 x16**: Optimal performance (32 GB/s bandwidth, ~5% improvement)
 - **Performance impact:** PCIe 2.0 or x8 slots can bottleneck GPU performance by 20-40%
-- **Check before renting:** Look for "PCIe 3.0 x16" in instance specifications
-- **Alternative:** PCIe 4.0 x16 is even better but not always available
+- **Recommendation:** PCIe 3.0 x16 is fine for image captioning, PCIe 4.0 x16 for heavy training
+- **Check before renting:** Look for PCIe specifications in instance details
 
 ---
 

@@ -9,7 +9,7 @@ This guide will help you deploy the WAN 2.2 Captioning Toolkit on a VPS for test
 - **RAM**: 8GB+ (16GB recommended for large datasets)
 - **Storage**: 50GB+ SSD
 - **GPU**: CUDA-compatible GPU (RTX 3060+ recommended)
-- **PCIe**: 3.0 x16 (critical for GPU performance)
+- **PCIe**: 3.0 x16 (sufficient) or 4.0 x16 (optimal)
 - **OS**: Ubuntu 20.04+ or Debian 11+
 
 ### Recommended VPS Providers
@@ -20,10 +20,15 @@ This guide will help you deploy the WAN 2.2 Captioning Toolkit on a VPS for test
 - **Paperspace** - Gradient platform
 
 ### PCIe Performance Impact
-- **PCIe 3.0 x16**: Optimal performance (16 GB/s bandwidth)
+- **PCIe 4.0 x16**: Best performance (32 GB/s bandwidth, ~5% improvement over 3.0)
+- **PCIe 3.0 x16**: Sufficient for most AI workloads (16 GB/s bandwidth)
 - **PCIe 3.0 x8**: 20-30% performance loss
 - **PCIe 2.0 x16**: 30-40% performance loss
-- **PCIe 4.0 x16**: Best performance (32 GB/s bandwidth)
+
+**For Image Captioning:**
+- **PCIe 3.0 x16**: Perfectly adequate for wd-llm-caption workloads
+- **PCIe 4.0 x16**: Only 2-5% performance improvement, not worth extra cost
+- **Recommendation**: Choose based on availability and price, not PCIe version
 
 ## 🚀 Quick Deployment
 
