@@ -9,14 +9,21 @@ This guide will help you deploy the WAN 2.2 Captioning Toolkit on a VPS for test
 - **RAM**: 8GB+ (16GB recommended for large datasets)
 - **Storage**: 50GB+ SSD
 - **GPU**: CUDA-compatible GPU (RTX 3060+ recommended)
+- **PCIe**: 3.0 x16 (critical for GPU performance)
 - **OS**: Ubuntu 20.04+ or Debian 11+
 
 ### Recommended VPS Providers
-- **RunPod** - GPU-optimized instances
-- **Vast.ai** - Cost-effective GPU rentals
+- **RunPod** - GPU-optimized instances with PCIe 3.0 x16
+- **Vast.ai** - Cost-effective GPU rentals (check PCIe specs)
 - **Google Cloud Platform** - T4/V100 instances
-- **AWS** - EC2 GPU instances
+- **AWS** - EC2 GPU instances (verify PCIe configuration)
 - **Paperspace** - Gradient platform
+
+### PCIe Performance Impact
+- **PCIe 3.0 x16**: Optimal performance (16 GB/s bandwidth)
+- **PCIe 3.0 x8**: 20-30% performance loss
+- **PCIe 2.0 x16**: 30-40% performance loss
+- **PCIe 4.0 x16**: Best performance (32 GB/s bandwidth)
 
 ## 🚀 Quick Deployment
 
